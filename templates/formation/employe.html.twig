@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation{% endblock %}
+
+{% block body %}
+    <h1>Liste des formations</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date de début     </th>
+                <th>Nombre d'heures     </th>
+                <th>Département    </th>
+                <th>Produit     </th>
+                <th>Actions     </th>
+            </tr>
+        </thead>
+        <tbody> 
+        {% for formation in formations %}   
+            <tr>
+                <td>{{ formation.dateDebut ? formation.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ formation.nbresHeures }}</td>
+                <td>{{ formation.departement }}</td>
+                <td>{{ formation.produit.libelle }}</td>
+                <td>
+                    <a href="{{ path('inscription_new', {'id': formation.id}) }}">S'inscrire</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+
+            
+
+    <table class="table">
+        <thead>
+        <h1>Liste des formations déjà inscris</h1>
+            <tr>
+                <th>Statut    </th>
+                <th>Employe    </th>
+                <th>Id de la formation    </th>
+                <th>Departement</th>
+
+            </tr>
+        </thead>
+            {% for inscription in inscriptions %}
+                <tr>
+                    <td>{{ inscription.statut}}</td>
+                    <td>{{ inscription.employe.nom }}</td>
+                    <td>{{ inscription.formation.id }}</td>
+                    <td>{{ inscription.formation.departement }}</td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+<a class="navbar-brand" href="#">Projet Symfony</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="http://localhost/symfony1/public/formation/">  Formations</a>
+        <a class="nav-link" href="#"> Liste des inscriptions</a>
+        <a class="nav-link" href="http://localhost/symfony1/public/employe/">  Employes</a>
+
+      </div>
+    </div>
+  </div>
+</nav><br>
+    <h1 align="center">Liste des inscriptions</h1><br><br>
+    <div class="container raw col-8" align="center">
+        <table class="table shadow-lg p-3 mb-5 bg-body rounded" >
+            <thead>
+                <tr>
+                    <th>Statut</th>
+                    <th>Formation</th>
+                    <th>Employe</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for inscription in inscriptions %}
+                <tr>
+                    <td>{{ inscription.statut }}</td>
+                    <td>{{ inscription.formation.id }}</td>
+                    <td>{{ inscription.employe.login }}</td>
+                    <td>
+                        <a href="{{ path('inscription_accept', {'id': inscription.id}) }}" class="btn btn-success">Accepter</a>
+                        <a href="{{ path('inscription_refuse', {'id': inscription.id}) }}" class="btn btn-danger">Refuser</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div align="center">
+        <h3>Ajouter une nouvelle formation</h3>
+
+        <a href="{{ path('formation_new') }}">Nouvelle formation</a>
+        <br>
+        <a href="{{ path('formation_index') }}">Liste des formations</a>
+        <br><br>
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation index{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+<a class="navbar-brand" href="#">Projet Symfony</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">  Formations</a>
+        <a class="nav-link" href="http://localhost/symfony1/public/inscription/"> Liste des inscriptions</a>
+        <a class="nav-link" href="http://localhost/symfony1/public/employe/">  Employes</a>
+
+      </div>
+    </div>
+  </div>
+</nav><br>
+    <h1 align="center">Liste des formations</h1>
+
+    <div class="container raw col-10" align="center">
+        <table class="table shadow-lg p-3 mb-5 bg-body rounded" >
+            <thead class="thead-dark">
+                <tr>
+                    <th>Date de début</th>
+                    <th>Nombre d'heures</th>
+                    <th>Département</th>
+                    <th>Produit</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for formation in formations %}
+                <tr>
+                    <td>{{ formation.dateDebut ? formation.dateDebut|date('Y-m-d') : '' }}</td>
+                    <td>{{ formation.nbresHeures }}</td>
+                    <td>{{ formation.departement }}</td>
+                    <td>{{ formation.produit.libelle }}</td>
+                    <td>
+                        <a href="{{ path('formation_show', {'id': formation.id}) }}">Voir</a>
+                        <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
