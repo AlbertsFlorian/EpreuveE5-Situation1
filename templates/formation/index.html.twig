@@ -5,7 +5,7 @@
 {% block body %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-<a class="navbar-brand" href="#">Projet Symfony</a>
+<a class="navbar-brand" href="#">Formation Master</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,7 +19,7 @@
     </div>
   </div>
 </nav><br>
-    <h1 align="center">Liste des formations</h1>
+    <h1 align="center">Liste des formations</h1><br>
 
     <div class="container raw col-10" align="center">
         <table class="table shadow-lg p-3 mb-5 bg-body rounded" >
@@ -35,7 +35,7 @@
             <tbody>
             {% for formation in formations %}
                 <tr>
-                    <td>{{ formation.dateDebut ? formation.dateDebut|date('Y-m-d') : '' }}</td>
+                    <td>{{ formation.dateDebut ? formation.dateDebut|date('d-m-Y') : '' }}</td>
                     <td>{{ formation.nbresHeures }}</td>
                     <td>{{ formation.departement }}</td>
                     <td>{{ formation.produit.libelle }}</td>

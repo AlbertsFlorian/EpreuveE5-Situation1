@@ -3,9 +3,9 @@
 {% block title %}Formation{% endblock %}
 
 {% block body %}
-    <h1>Liste des formations</h1>
+    <h1 align="center">Liste des formations</h1><br>
 
-    <table class="table">
+    <table class="table" align="center">
         <thead>
             <tr>
                 <th>Date de début     </th>
@@ -18,7 +18,7 @@
         <tbody> 
         {% for formation in formations %}   
             <tr>
-                <td>{{ formation.dateDebut ? formation.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ formation.dateDebut ? formation.dateDebut|date('d-m-Y') : '' }}</td>
                 <td>{{ formation.nbresHeures }}</td>
                 <td>{{ formation.departement }}</td>
                 <td>{{ formation.produit.libelle }}</td>
@@ -34,30 +34,27 @@
 
             
 
-    <table class="table">
+    <table class="table" align="center">
         <thead>
-        <h1>Liste des formations déjà inscris</h1>
+        <h1 align="center">Liste des formations déjà inscrit</h1><br>
             <tr>
                 <th>Statut    </th>
-                <th>Employe    </th>
-                <th>Id de la formation    </th>
                 <th>Departement</th>
-
+                <th>Produit </th>
             </tr>
         </thead>
             {% for inscription in inscriptions %}
                 <tr>
                     <td>{{ inscription.statut}}</td>
-                    <td>{{ inscription.employe.nom }}</td>
-                    <td>{{ inscription.formation.id }}</td>
                     <td>{{ inscription.formation.departement }}</td>
-
+                    <td>{{ inscription.formation.produit.libelle }}</td>
                 </tr>
             {% else %}
                 <tr>
                     <td colspan="5">no records found</td>
                 </tr>
             {% endfor %}
+            
         </tbody>
     </table>
 {% endblock %}

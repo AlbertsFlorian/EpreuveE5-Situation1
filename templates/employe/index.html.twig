@@ -5,7 +5,7 @@
 {% block body %}
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-<a class="navbar-brand" href="#">Projet Symfony</a>
+<a class="navbar-brand" href="#">Formation Master</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,16 +19,14 @@
     </div>
   </div>
 </nav><br>
+<h1 align="center">Liste des employés</h1><br>
 <div class="container raw col-8" align="center">
         <div class="shadow-lg p-3 mb-5 bg-body rounded" >
-            <h1>Liste des employés</h1>
 
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Login</th>
-                        <th>Mdp</th>
                         <th>Nom</th>
                         <th>Prenom</th>
                         <th>Statut</th>
@@ -38,9 +36,7 @@
                 <tbody>
                 {% for employe in employes %}
                     <tr>
-                        <td>{{ employe.id }}</td>
                         <td>{{ employe.login }}</td>
-                        <td>{{ employe.mdp }}</td>
                         <td>{{ employe.nom }}</td>
                         <td>{{ employe.prenom }}</td>
                         <td>{{ employe.statut }}</td>

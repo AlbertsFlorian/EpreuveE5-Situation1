@@ -30,4 +30,14 @@ class InscriptionRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findByFormation($value)
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.formation = :val')
+            ->setParameter('val', $value)
+            ->orderBy('i.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 }
